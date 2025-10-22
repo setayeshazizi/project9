@@ -1,0 +1,457 @@
+{
+  "schema": "pocket-classroom-backup/v1",
+  "exportDate": "2025-10-22T14:27:38.946Z",
+  "totalCapsules": 4,
+  "capsules": [
+    {
+      "schema": "pocket-classroom/v1",
+      "title": "JavaScript",
+      "subject": "Programming",
+      "level": "beginner",
+      "description": "Essential JavaScript concepts for beginners",
+      "notes": [
+        "V",
+        "a",
+        "r",
+        "i",
+        "a",
+        "b",
+        "l",
+        "e",
+        "s",
+        "a",
+        "r",
+        "e",
+        "c",
+        "o",
+        "n",
+        "t",
+        "a",
+        "i",
+        "n",
+        "e",
+        "r",
+        "s",
+        "f",
+        "o",
+        "r",
+        "s",
+        "t",
+        "o",
+        "r",
+        "i",
+        "n",
+        "g",
+        "d",
+        "a",
+        "t",
+        "a",
+        "v",
+        "a",
+        "l",
+        "u",
+        "e",
+        "s",
+        "F",
+        "u",
+        "n",
+        "c",
+        "t",
+        "i",
+        "o",
+        "n",
+        "s",
+        "a",
+        "r",
+        "e",
+        "r",
+        "e",
+        "u",
+        "s",
+        "a",
+        "b",
+        "l",
+        "e",
+        "b",
+        "l",
+        "o",
+        "c",
+        "k",
+        "s",
+        "o",
+        "f",
+        "c",
+        "o",
+        "d",
+        "e",
+        "A",
+        "r",
+        "r",
+        "a",
+        "y",
+        "s",
+        "s",
+        "t",
+        "o",
+        "r",
+        "e",
+        "m",
+        "u",
+        "l",
+        "t",
+        "i",
+        "p",
+        "l",
+        "e",
+        "v",
+        "a",
+        "l",
+        "u",
+        "e",
+        "s",
+        "i",
+        "n",
+        "a",
+        "s",
+        "i",
+        "n",
+        "g",
+        "l",
+        "e",
+        "v",
+        "a",
+        "r",
+        "i",
+        "a",
+        "b",
+        "l",
+        "e",
+        "O",
+        "b",
+        "j",
+        "e",
+        "c",
+        "t",
+        "s",
+        "a",
+        "r",
+        "e",
+        "c",
+        "o",
+        "l",
+        "l",
+        "e",
+        "c",
+        "t",
+        "i",
+        "o",
+        "n",
+        "s",
+        "o",
+        "f",
+        "k",
+        "e",
+        "y",
+        "-",
+        "v",
+        "a",
+        "l",
+        "u",
+        "e",
+        "p",
+        "a",
+        "i",
+        "r",
+        "s"
+      ],
+      "flashcards": [
+        {
+          "front": "What is a variable in JavaScript?",
+          "back": "A container for storing data values"
+        },
+        {
+          "front": "How do you declare a function?",
+          "back": "function functionName() { }"
+        },
+        {
+          "front": "What is an array?",
+          "back": "A data structure that stores multiple values"
+        },
+        {
+          "front": "What is JSON?",
+          "back": "JavaScript Object Notation - a data interchange format"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "Which keyword is used to declare a variable in JavaScript?",
+          "choices": [
+            "var",
+            "variable",
+            "declare",
+            "set"
+          ],
+          "correct": 0,
+          "explanation": "var, let, and const are all used to declare variables"
+        },
+        {
+          "question": "What does DOM stand for?",
+          "choices": [
+            "Document Object Model",
+            "Data Object Management",
+            "Dynamic Object Method",
+            "Document Oriented Model"
+          ],
+          "correct": 0,
+          "explanation": "DOM represents the structure of HTML documents"
+        }
+      ],
+      "id": "sample_1",
+      "updatedAt": "2025-10-22T14:27:20.546Z"
+    },
+    {
+      "id": "sample_3",
+      "schema": "pocket-classroom/v1",
+      "title": "World Capitals",
+      "subject": "Geography",
+      "level": "advanced",
+      "description": "Capital cities of countries around the world",
+      "notes": [
+        "Europe has 44 countries",
+        "Asia is the largest continent",
+        "Africa has 54 countries",
+        "South America has 12 countries"
+      ],
+      "flashcards": [
+        {
+          "front": "Capital of France",
+          "back": "Paris"
+        },
+        {
+          "front": "Capital of Japan",
+          "back": "Tokyo"
+        },
+        {
+          "front": "Capital of Brazil",
+          "back": "Brasília"
+        },
+        {
+          "front": "Capital of Australia",
+          "back": "Canberra"
+        },
+        {
+          "front": "Capital of Egypt",
+          "back": "Cairo"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "What is the capital of Canada?",
+          "choices": [
+            "Toronto",
+            "Vancouver",
+            "Ottawa",
+            "Montreal"
+          ],
+          "correct": 2,
+          "explanation": "Ottawa is the capital city of Canada"
+        },
+        {
+          "question": "Which city is the capital of India?",
+          "choices": [
+            "Mumbai",
+            "New Delhi",
+            "Bangalore",
+            "Kolkata"
+          ],
+          "correct": 1,
+          "explanation": "New Delhi is the capital of India"
+        }
+      ],
+      "updatedAt": "2025-10-21T20:54:30.749Z"
+    },
+    {
+      "id": "sample_4",
+      "schema": "pocket-classroom/v1",
+      "title": "Trading Fundamentals",
+      "subject": "Trading",
+      "level": "beginner",
+      "description": "Basic concepts of financial trading and investment",
+      "notes": [
+        "Bull Market: Rising prices and optimistic sentiment",
+        "Bear Market: Falling prices and pessimistic sentiment",
+        "Support Level: Price level where buying interest emerges",
+        "Resistance Level: Price level where selling pressure appears",
+        "Volume: Number of shares traded in a given period",
+        "Market Cap: Total value of company shares",
+        "P/E Ratio: Price-to-Earnings ratio for valuation",
+        "Dividend: Payment made by companies to shareholders"
+      ],
+      "flashcards": [
+        {
+          "front": "What is a Bull Market?",
+          "back": "A market with rising prices and optimistic investor sentiment"
+        },
+        {
+          "front": "What is a Bear Market?",
+          "back": "A market with falling prices and pessimistic investor sentiment"
+        },
+        {
+          "front": "What is Support Level?",
+          "back": "A price level where buying interest typically emerges"
+        },
+        {
+          "front": "What is Resistance Level?",
+          "back": "A price level where selling pressure typically appears"
+        },
+        {
+          "front": "What does Volume indicate?",
+          "back": "The number of shares traded in a given time period"
+        },
+        {
+          "front": "What is Market Capitalization?",
+          "back": "The total value of all company shares outstanding"
+        },
+        {
+          "front": "What is P/E Ratio?",
+          "back": "Price-to-Earnings ratio used for stock valuation"
+        },
+        {
+          "front": "What is a Dividend?",
+          "back": "A payment made by companies to their shareholders"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "What characterizes a Bull Market?",
+          "choices": [
+            "Falling prices",
+            "Rising prices",
+            "Stable prices",
+            "Volatile prices"
+          ],
+          "correct": 1,
+          "explanation": "A Bull Market is characterized by rising prices and optimistic sentiment"
+        },
+        {
+          "question": "What is the main purpose of a Stop Loss order?",
+          "choices": [
+            "Maximize profits",
+            "Limit losses",
+            "Increase volume",
+            "Split shares"
+          ],
+          "correct": 1,
+          "explanation": "Stop Loss orders are designed to limit potential losses on a trade"
+        },
+        {
+          "question": "What does high trading volume typically indicate?",
+          "choices": [
+            "Low interest",
+            "High interest",
+            "Price stability",
+            "Market closure"
+          ],
+          "correct": 1,
+          "explanation": "High volume indicates strong interest and participation in the market"
+        },
+        {
+          "question": "What is diversification in trading?",
+          "choices": [
+            "Buying one stock",
+            "Spreading investments",
+            "Day trading only",
+            "Using leverage"
+          ],
+          "correct": 1,
+          "explanation": "Diversification means spreading investments across different assets to reduce risk"
+        }
+      ],
+      "updatedAt": "2025-10-21T20:54:30.749Z"
+    },
+    {
+      "id": "sample_2",
+      "schema": "pocket-classroom/v1",
+      "title": "Spanish Vocabulary",
+      "subject": "Language",
+      "level": "intermediate",
+      "description": "Common Spanish words and phrases",
+      "notes": [
+        "Hola - Hello",
+        "Gracias - Thank you",
+        "Por favor - Please",
+        "Lo siento - I'm sorry"
+      ],
+      "flashcards": [
+        {
+          "front": "Hello",
+          "back": "Hola"
+        },
+        {
+          "front": "Thank you",
+          "back": "Gracias"
+        },
+        {
+          "front": "Please",
+          "back": "Por favor"
+        },
+        {
+          "front": "Goodbye",
+          "back": "Adiós"
+        },
+        {
+          "front": "How are you?",
+          "back": "¿Cómo estás?"
+        }
+      ],
+      "quiz": [
+        {
+          "question": "How do you say \"Thank you\" in Spanish?",
+          "choices": [
+            "Hola",
+            "Gracias",
+            "Por favor",
+            "Adiós"
+          ],
+          "correct": 1,
+          "explanation": "Gracias is the most common way to say thank you"
+        }
+      ],
+      "updatedAt": "2025-10-21T20:54:30.749Z"
+    }
+  ],
+  "progress": {
+    "sample_1": {
+      "bestScore": 0,
+      "knownFlashcards": [],
+      "cardProgress": {},
+      "totalStudyTime": 0,
+      "lastStudied": null,
+      "streakDays": 0
+    },
+    "sample_3": {
+      "bestScore": 0,
+      "knownFlashcards": [],
+      "cardProgress": {},
+      "totalStudyTime": 0,
+      "lastStudied": null,
+      "streakDays": 0
+    },
+    "sample_4": {
+      "bestScore": 0,
+      "knownFlashcards": [],
+      "cardProgress": {},
+      "totalStudyTime": 0,
+      "lastStudied": null,
+      "streakDays": 0
+    },
+    "sample_2": {
+      "bestScore": 0,
+      "knownFlashcards": [],
+      "cardProgress": {},
+      "totalStudyTime": 0,
+      "lastStudied": null,
+      "streakDays": 0
+    }
+  }
+}

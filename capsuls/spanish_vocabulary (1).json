@@ -1,0 +1,50 @@
+{
+  "id": "sample_2",
+  "schema": "pocket-classroom/v1",
+  "title": "Spanish Vocabulary",
+  "subject": "Language",
+  "level": "intermediate",
+  "description": "Common Spanish words and phrases",
+  "notes": [
+    "Hola - Hello",
+    "Gracias - Thank you",
+    "Por favor - Please",
+    "Lo siento - I'm sorry"
+  ],
+  "flashcards": [
+    {
+      "front": "Hello",
+      "back": "Hola"
+    },
+    {
+      "front": "Thank you",
+      "back": "Gracias"
+    },
+    {
+      "front": "Please",
+      "back": "Por favor"
+    },
+    {
+      "front": "Goodbye",
+      "back": "Adiós"
+    },
+    {
+      "front": "How are you?",
+      "back": "¿Cómo estás?"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "How do you say \"Thank you\" in Spanish?",
+      "choices": [
+        "Hola",
+        "Gracias",
+        "Por favor",
+        "Adiós"
+      ],
+      "correct": 1,
+      "explanation": "Gracias is the most common way to say thank you"
+    }
+  ],
+  "updatedAt": "2025-10-21T20:54:30.749Z"
+}

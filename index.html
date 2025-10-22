@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Classroom - Offline Learning Capsules</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    
+<link rel="stylesheet" href="css/styles.css">
+  <script src="js/data.js"></script>
+
+<style id="injected-filter-styles">
+.filter-tag { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 4px 8px; display: inline-flex; align-items:center; gap:6px; }
+.filter-tag button { color: var(--text-primary); font-size:16px; line-height:1; border: none; background: transparent; margin-left:6px; cursor:pointer; }
+</style>
+
+</head>
+<body>
+    <!-- 3D Loader -->
+    <div id="loader" class="loader-container">
+        <div class="loader-content">
+            <div class="logo-3d">
+                <div class="logo-text">
+                    <span class="logo-icon">📚</span>
+                    <span class="logo-title">Pocket Classroom</span>
+                </div>
+                <div class="glow-ring"></div>
+                <div class="glow-ring ring-2"></div>
+                <div class="glow-ring ring-3"></div>
+            </div>
+            <div class="loading-text">Loading your learning experience...</div>
+            <div class="loading-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container" id="main-app" style="display: none;">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#" onclick="showLibrary()">
+                    <i class="bi bi-book"></i> Pocket Classroom
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#" onclick="showLibrary()" id="nav-library">
+                                <i class="bi bi-house"></i> Library
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showAuthor()" id="nav-author">
+                                <i class="bi bi-pencil"></i> Author
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" onclick="showLearn()" id="nav-learn">
+                                <i class="bi bi-mortarboard"></i> Learn
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn theme-toggle ms-3" onclick="toggleTheme()" id="theme-toggle">
+                                <i class="bi bi-moon-fill"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="container">
+                <!-- Library View -->
+                <div id="library-view" class="view-section">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2><i class="bi bi-collection"></i> Learning Capsules</h2>
+                        <div>
+                            <button class="btn btn-outline-success me-2" onclick="exportAllCapsules()">
+                                <i class="bi bi-download"></i> Export All
+                            </button>
+                            <button class="btn btn-outline-primary me-2" onclick="importCapsule()">
+                                <i class="bi bi-upload"></i> Import JSON
+                            </button>
+                            <button class="btn btn-primary" onclick="createNewCapsule()">
+                                <i class="bi bi-plus-circle"></i> New Capsule
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Search and Filter -->
+                    <div class="search-box">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="search-input" placeholder="Search capsules..." onkeyup="filterCapsules()">
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="subject-filter" onchange="filterCapsules()">
+                                    <option value="">Select Subject</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-select" id="level-filter" onchange="filterCapsules()">
+                                    <option value="">All Levels</option>
+                                    <option value="beginner">Beginner</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="advanced">Advanced</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Capsules Grid -->
+                    <div id="capsules-grid" class="row">
+                        <!-- Capsules will be rendered here -->
+                    </div>
+                </div>
+
+                <!-- Author View -->
+                <div id="author-view" class="view-section" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2><i class="bi bi-pencil-square"></i> Author Mode</h2>
+                        <div>
+                            <button class="btn btn-outline-secondary me-2" onclick="showLibrary()">Cancel</button>
+                            <button class="btn btn-primary" onclick="saveCapsule()">
+                                <i class="bi bi-save"></i> Save Capsule
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Meta Form -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5><i class="bi bi-info-circle"></i> Capsule Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label class="form-label">Title *</label>
+                                        <input type="text" class="form-control" id="capsule-title" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Subject</label>
+                                        <input type="text" class="form-control" id="capsule-subject">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Level</label>
+                                        <select class="form-select" id="capsule-level">
+                                            <option value="beginner">Beginner</option>
+                                            <option value="intermediate">Intermediate</option>
+                                            <option value="advanced">Advanced</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" id="capsule-description" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="author-tabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#notes-tab">
+                                <i class="bi bi-journal-text"></i> Notes
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#flashcards-tab">
+                                <i class="bi bi-card-text"></i> Flashcards
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#quiz-tab">
+                                <i class="bi bi-question-circle"></i> Quiz
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!-- Notes Tab -->
+                        <div class="tab-pane fade show active" id="notes-tab">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5><i class="bi bi-journal-text"></i> Notes Editor</h5>
+                                </div>
+                                <div class="card-body">
+                                    <textarea class="form-control" id="notes-editor" rows="15" placeholder="Enter your notes here... (one note per line)"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Flashcards Tab -->
+                        <div class="tab-pane fade" id="flashcards-tab">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="bi bi-card-text"></i> Flashcards Editor</h5>
+                                    <button class="btn btn-sm btn-primary" onclick="addFlashcard()">
+                                        <i class="bi bi-plus"></i> Add Card
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div id="flashcards-editor">
+                                        <!-- Flashcards will be rendered here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quiz Tab -->
+                        <div class="tab-pane fade" id="quiz-tab">
+                            <div class="card">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h5><i class="bi bi-question-circle"></i> Quiz Editor</h5>
+                                    <button class="btn btn-sm btn-primary" onclick="addQuizQuestion()">
+                                        <i class="bi bi-plus"></i> Add Question
+                                    </button>
+                                </div>
+                                <div class="card-body">
+                                    <div id="quiz-editor">
+                                        <!-- Quiz questions will be rendered here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learn View -->
+                <div id="learn-view" class="view-section" style="display: none;">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h2><i class="bi bi-mortarboard"></i> Learn Mode</h2>
+                        <div>
+                            <select class="form-select" id="capsule-selector" onchange="loadCapsuleForLearning()" style="width: auto; display: inline-block;">
+                                <option value="">Select a capsule...</option>
+                            </select>
+                            <button class="btn btn-primary ms-2" onclick="startSmartLearning()" id="smart-learn-btn" disabled>
+                                <i class="bi bi-brain"></i> Smart Review
+                            </button>
+                            <button class="btn btn-outline-primary ms-2" onclick="exportCurrentCapsule()" id="export-btn" disabled>
+                                <i class="bi bi-download"></i> Export
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Keyboard Shortcuts Info -->
+                    <div class="alert alert-info">
+                        <strong>Keyboard Shortcuts:</strong>
+                        <span class="keyboard-shortcut">Space</span> Flip flashcard
+                        <span class="keyboard-shortcut">[</span> / <span class="keyboard-shortcut">]</span> Switch tabs
+                    </div>
+
+                    <!-- Learn Content Tabs -->
+                    <ul class="nav nav-tabs mb-4" id="learn-tabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#learn-notes-tab">
+                                <i class="bi bi-journal-text"></i> Notes
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#learn-flashcards-tab">
+                                <i class="bi bi-card-text"></i> Flashcards
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#learn-quiz-tab">
+                                <i class="bi bi-question-circle"></i> Quiz
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <!-- Learn Notes Tab -->
+                        <div class="tab-pane fade show active" id="learn-notes-tab">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row align-items-center">
+                                        <div class="col">
+                                            <h5><i class="bi bi-journal-text"></i> Notes</h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <input type="text" class="form-control form-control-sm" id="notes-search" placeholder="Search notes..." onkeyup="searchNotes()">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div id="learn-notes-content">
+                                        <div class="empty-state">
+                                            <i class="bi bi-journal-text"></i>
+                                            <h4>No capsule selected</h4>
+                                            <p>Select a capsule to view its notes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learn Flashcards Tab -->
+                        <div class="tab-pane fade" id="learn-flashcards-tab">
+                            <div id="learn-flashcards-content">
+                                <div class="empty-state">
+                                    <i class="bi bi-card-text"></i>
+                                    <h4>No capsule selected</h4>
+                                    <p>Select a capsule to study its flashcards</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learn Quiz Tab -->
+                        <div class="tab-pane fade" id="learn-quiz-tab">
+                            <div id="learn-quiz-content">
+                                <div class="empty-state">
+                                    <i class="bi bi-question-circle"></i>
+                                    <h4>No capsule selected</h4>
+                                    <p>Select a capsule to take its quiz</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Author Modal -->
+    <div class="modal fade" id="authorModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                <div class="modal-header" style="border-bottom: 1px solid var(--border-color);">
+                    <h5 class="modal-title" style="color: var(--text-primary);">
+                        <i class="bi bi-pencil-square"></i> Author Mode
+                    </h5>
+                    <div>
+                        <button class="btn btn-outline-secondary me-2" data-bs-dismiss="modal">
+                            <i class="bi bi-x-lg"></i> Cancel
+                        </button>
+                        <button class="btn btn-primary" onclick="saveCapsuleFromModal()">
+                            <i class="bi bi-save"></i> Save Capsule
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-body" style="padding: 2rem;">
+                    <!-- Author content will be loaded here -->
+                    <div id="author-modal-content">
+                        <!-- Meta Form -->
+                        <div class="card mb-4" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                            <div class="card-header" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+                                <h5 style="color: var(--text-primary);"><i class="bi bi-info-circle"></i> Capsule Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label" style="color: var(--text-primary);">Title *</label>
+                                            <input type="text" class="form-control" id="modal-capsule-title" required style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label" style="color: var(--text-primary);">Subject</label>
+                                            <input type="text" class="form-control" id="modal-capsule-subject" style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="mb-3">
+                                            <label class="form-label" style="color: var(--text-primary);">Level</label>
+                                            <select class="form-select" id="modal-capsule-level" style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);">
+                                                <option value="beginner">Beginner</option>
+                                                <option value="intermediate">Intermediate</option>
+                                                <option value="advanced">Advanced</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" style="color: var(--text-primary);">Description</label>
+                                    <textarea class="form-control" id="modal-capsule-description" rows="3" style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Tabs -->
+                        <ul class="nav nav-tabs mb-4" id="modal-author-tabs">
+                            <li class="nav-item">
+                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#modal-notes-tab" style="color: var(--text-primary);">
+                                    <i class="bi bi-journal-text"></i> Notes
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#modal-flashcards-tab" style="color: var(--text-primary);">
+                                    <i class="bi bi-card-text"></i> Flashcards
+                                </button>
+                            </li>
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#modal-quiz-tab" style="color: var(--text-primary);">
+                                    <i class="bi bi-question-circle"></i> Quiz
+                                </button>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Notes Tab -->
+                            <div class="tab-pane fade show active" id="modal-notes-tab">
+                                <div class="card" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                                    <div class="card-header" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+                                        <h5 style="color: var(--text-primary);"><i class="bi bi-journal-text"></i> Notes Editor</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <textarea class="form-control" id="modal-notes-editor" rows="15" placeholder="Enter your notes here... (one note per line)" style="background: var(--card-bg); border: 1px solid var(--border-color); color: var(--text-primary);"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Flashcards Tab -->
+                            <div class="tab-pane fade" id="modal-flashcards-tab">
+                                <div class="card" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                                    <div class="card-header d-flex justify-content-between align-items-center" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+                                        <h5 style="color: var(--text-primary);"><i class="bi bi-card-text"></i> Flashcards Editor</h5>
+                                        <button class="btn btn-sm btn-primary" onclick="addModalFlashcard()">
+                                            <i class="bi bi-plus"></i> Add Card
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="modal-flashcards-editor">
+                                            <!-- Flashcards will be rendered here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Quiz Tab -->
+                            <div class="tab-pane fade" id="modal-quiz-tab">
+                                <div class="card" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+                                    <div class="card-header d-flex justify-content-between align-items-center" style="background: var(--bg-secondary); border-bottom: 1px solid var(--border-color);">
+                                        <h5 style="color: var(--text-primary);"><i class="bi bi-question-circle"></i> Quiz Editor</h5>
+                                        <button class="btn btn-sm btn-primary" onclick="addModalQuizQuestion()">
+                                            <i class="bi bi-plus"></i> Add Question
+                                        </button>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="modal-quiz-editor">
+                                            <!-- Quiz questions will be rendered here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal fade" id="importModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Import Capsule</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Select JSON file:</label>
+                        <input type="file" class="form-control" id="import-file" accept=".json">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Or paste JSON:</label>
+                        <textarea class="form-control" id="import-text" rows="10" placeholder="Paste your capsule JSON here..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="processImport()">Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+<script src="js/app.js"></script>
+    <script src="js/storage.js"></script>    <script src="js/library.js"></script>    <script src="js/author.js"></script>    <script src="js/learn.js"></script>    <script src="js/main.js"></script>
+<!-- Confirm Remove Filter Modal (injected) -->
+<div class="modal fade" id="confirmFilterModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background: var(--card-bg); border: 1px solid var(--border-color);">
+      <div class="modal-body" style="color: var(--text-primary); font-weight:600; font-size:1rem;">
+        Remove filter?
+      </div>
+      <div class="modal-footer" style="border-top:1px solid var(--border-color);">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-success" id="confirmFilterYes">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

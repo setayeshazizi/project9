@@ -1,0 +1,61 @@
+{
+  "id": "sample_3",
+  "schema": "pocket-classroom/v1",
+  "title": "World Capitals",
+  "subject": "Geography",
+  "level": "advanced",
+  "description": "Capital cities of countries around the world",
+  "notes": [
+    "Europe has 44 countries",
+    "Asia is the largest continent",
+    "Africa has 54 countries",
+    "South America has 12 countries"
+  ],
+  "flashcards": [
+    {
+      "front": "Capital of France",
+      "back": "Paris"
+    },
+    {
+      "front": "Capital of Japan",
+      "back": "Tokyo"
+    },
+    {
+      "front": "Capital of Brazil",
+      "back": "Brasília"
+    },
+    {
+      "front": "Capital of Australia",
+      "back": "Canberra"
+    },
+    {
+      "front": "Capital of Egypt",
+      "back": "Cairo"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What is the capital of Canada?",
+      "choices": [
+        "Toronto",
+        "Vancouver",
+        "Ottawa",
+        "Montreal"
+      ],
+      "correct": 2,
+      "explanation": "Ottawa is the capital city of Canada"
+    },
+    {
+      "question": "Which city is the capital of India?",
+      "choices": [
+        "Mumbai",
+        "New Delhi",
+        "Bangalore",
+        "Kolkata"
+      ],
+      "correct": 1,
+      "explanation": "New Delhi is the capital of India"
+    }
+  ],
+  "updatedAt": "2025-10-21T20:54:30.749Z"
+}

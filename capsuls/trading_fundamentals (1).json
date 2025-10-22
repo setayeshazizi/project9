@@ -1,0 +1,99 @@
+{
+  "id": "sample_4",
+  "schema": "pocket-classroom/v1",
+  "title": "Trading Fundamentals",
+  "subject": "Trading",
+  "level": "beginner",
+  "description": "Basic concepts of financial trading and investment",
+  "notes": [
+    "Bull Market: Rising prices and optimistic sentiment",
+    "Bear Market: Falling prices and pessimistic sentiment",
+    "Support Level: Price level where buying interest emerges",
+    "Resistance Level: Price level where selling pressure appears",
+    "Volume: Number of shares traded in a given period",
+    "Market Cap: Total value of company shares",
+    "P/E Ratio: Price-to-Earnings ratio for valuation",
+    "Dividend: Payment made by companies to shareholders"
+  ],
+  "flashcards": [
+    {
+      "front": "What is a Bull Market?",
+      "back": "A market with rising prices and optimistic investor sentiment"
+    },
+    {
+      "front": "What is a Bear Market?",
+      "back": "A market with falling prices and pessimistic investor sentiment"
+    },
+    {
+      "front": "What is Support Level?",
+      "back": "A price level where buying interest typically emerges"
+    },
+    {
+      "front": "What is Resistance Level?",
+      "back": "A price level where selling pressure typically appears"
+    },
+    {
+      "front": "What does Volume indicate?",
+      "back": "The number of shares traded in a given time period"
+    },
+    {
+      "front": "What is Market Capitalization?",
+      "back": "The total value of all company shares outstanding"
+    },
+    {
+      "front": "What is P/E Ratio?",
+      "back": "Price-to-Earnings ratio used for stock valuation"
+    },
+    {
+      "front": "What is a Dividend?",
+      "back": "A payment made by companies to their shareholders"
+    }
+  ],
+  "quiz": [
+    {
+      "question": "What characterizes a Bull Market?",
+      "choices": [
+        "Falling prices",
+        "Rising prices",
+        "Stable prices",
+        "Volatile prices"
+      ],
+      "correct": 1,
+      "explanation": "A Bull Market is characterized by rising prices and optimistic sentiment"
+    },
+    {
+      "question": "What is the main purpose of a Stop Loss order?",
+      "choices": [
+        "Maximize profits",
+        "Limit losses",
+        "Increase volume",
+        "Split shares"
+      ],
+      "correct": 1,
+      "explanation": "Stop Loss orders are designed to limit potential losses on a trade"
+    },
+    {
+      "question": "What does high trading volume typically indicate?",
+      "choices": [
+        "Low interest",
+        "High interest",
+        "Price stability",
+        "Market closure"
+      ],
+      "correct": 1,
+      "explanation": "High volume indicates strong interest and participation in the market"
+    },
+    {
+      "question": "What is diversification in trading?",
+      "choices": [
+        "Buying one stock",
+        "Spreading investments",
+        "Day trading only",
+        "Using leverage"
+      ],
+      "correct": 1,
+      "explanation": "Diversification means spreading investments across different assets to reduce risk"
+    }
+  ],
+  "updatedAt": "2025-10-21T20:54:30.749Z"
+}
